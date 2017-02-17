@@ -1,14 +1,15 @@
 {
-  "name": "AppPlayground",
+  "name": "app-playground",
   "version": "0.0.1",
   "private": true,
   "author": "ZX Ventures LLC",
   "license": "MIT",
   "scripts": {
     "android": "ANDROID_HOME=/Users/$(whoami)/Library/Android/sdk react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "webpack-dev-server --port 3000 --config web/webpack.config.dev.js --inline --hot --colors",
     "clean": "rm -rf node_modules && watchman watch-del-all",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "ios": "react-native run-ios",
     "install": "flow-typed update",
     "lint": "eslint src __tests__",
     "lint:fix": "eslint --fix src __tests__",
@@ -20,19 +21,24 @@
     "test:update-snapshots": "jest --coverage --no-cache -u"
   },
   "dependencies": {
+    "@reggi/react-navigation-views": "0.1.3",
     "apollo-client": "^0.5.25",
     "graphql": "^0.6.1",
     "graphql-tag": "^0.1.7",
     "graphql-tools": "^0.6.2",
-    "react": "~15.4.0-rc.4",
+    "json-loader": "^0.5.4",
+    "react": "15.3.2",
     "react-apollo": "^0.7.2",
     "react-native": "0.42.0-rc.3",
     "react-native-vector-icons": "^4.0.0",
+    "react-native-web": "0.0.49",
+    "react-navigation-views": "^0.1.0-rc.3",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "redux-observable": "^0.12.2",
     "redux-persist": "^4.0.1",
     "rxjs": "^5.0.0-rc.5",
+    "url-loader": "0.5.7",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
@@ -41,7 +47,9 @@
     "babel-eslint": "^6.1.0",
     "babel-jest": "18.0.0",
     "babel-loader": "^6.2.4",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-preset-react-native": "1.9.1",
+    "babel-register": "^6.23.0",
     "concurrently": "^3.1.0",
     "eslint": "^3.13.0",
     "eslint-config-standard": "^6.2.1",
@@ -57,7 +65,10 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-test-renderer": "15.4.1",
-    "redux-mock-store": "^1.2.1"
+    "redux-mock-store": "^1.2.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "1.14.1",
+    "wepback": "^1.0.0"
   },
   "jest": {
     "preset": "react-native",
